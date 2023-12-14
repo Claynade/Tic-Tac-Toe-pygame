@@ -1,6 +1,6 @@
 # TIC TAC TOE
 
-TIC TAC TOE made in pygame. Currently supports 2Players(offline) and vs AI.
+Tic-Tac-Toe made in pygame. Currently supports vs 2-players(offline) and vs AI.
 
 ## Made in
 
