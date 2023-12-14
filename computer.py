@@ -1,17 +1,13 @@
 import pygame
 from functions import *
 from random import randint
-pygame.init()
 boardlst=[[' ', ' ', ' '],[' ', ' ', ' '],[' ', ' ', ' ']]
 board={'a1':' ', 'a2':' ','a3':' ','b1':' ','b2':' ','b3':' ','c1':' ', 'c2':' ', 'c3':' '}
 playerTurn=True
-def drawText(x,y,color,size,text):
-	font = pygame.font.Font('freesansbold.ttf', size)
-	text_render= font.render(text, True, color)
-	screen.blit(text_render, (x, y))
-def Player(board,pos,click,option,theme):
+def Player(screen, board,pos,click,option,theme):
+	screen_x, screen_y=screen.get_size()
 	global playerTurn
-	drawBoard(0,screen_y-screen_x//2, theme)
+	drawBoard(screen, 0,screen_y-screen_x//2, theme)
 	button1=pygame.Rect(0,(screen_y-screen_x)//2,screen_x//3,screen_x//3)
 	button2=pygame.Rect(screen_x//3,(screen_y-screen_x)//2,screen_x//3,screen_x//3)
 	button3=pygame.Rect(screen_x//3+screen_x//3,(screen_y-screen_x)//2,screen_x//3,screen_x//3)
@@ -151,7 +147,8 @@ def minimax(board,computerMarker,isMaximising):
         return bestscore
 
 #main loop
-def vsComputer(theme):
+def vsComputer(screen, theme):
+	screen_x, screen_y=screen.get_size()
 	global playerTurn
 	player='X'
 	AImarker='O'
@@ -169,7 +166,7 @@ def vsComputer(theme):
 	coor_c3=(screen_x//3+screen_x//3,(screen_y-screen_x)//2+screen_x//3+screen_x//3)
 	while running:
 		pos=pygame.mouse.get_pos()
-		drawBoard(0,screen_y-screen_x//2, theme)
+		drawBoard(screen, 0,screen_y-screen_x//2, theme)
 		for event in pygame.event.get():
 			if event.type==pygame.QUIT:
 				running=False
@@ -179,15 +176,15 @@ def vsComputer(theme):
 				click=False
 		if playable:
 			if not playerTurn:
-				Player(board,pos,click,player,theme)
+				Player(screen, board,pos,click,player,theme)
 		if Xwin(board):
-			drawText(screen_x//5,screen_y/10,(200,200,200),150,'X won!')
+			drawText(screen, screen_x//5,screen_y/10,(200,200,200),150,'X won!')
 			playable=False
 		if Owin(board):
-			drawText(screen_x//5,screen_y/10,(200,200,200),150,'O won!')
+			drawText(screen, screen_x//5,screen_y/10,(200,200,200),150,'O won!')
 			playable=False
 		if gameOver(board) and not Xwin(board)and not Owin(board):
-			drawText(screen_x//3,screen_y/10,(200,200,200),150,'Tie!')
+			drawText(screen, screen_x//3,screen_y/10,(200,200,200),150,'Tie!')
 			playable=False
 		if playable:
 			if playerTurn!=False:
@@ -195,42 +192,43 @@ def vsComputer(theme):
 		for i in board.keys():
 			if board[i]=='X':
 				if i=='a1':
-					cross(coor_a1[0],coor_a1[1], theme)
+					cross(screen, coor_a1[0],coor_a1[1], theme)
 				if i=='a2':
-					cross(coor_a2[0],coor_a2[1], theme)
+					cross(screen, coor_a2[0],coor_a2[1], theme)
 				if i=='a3':
-					cross(coor_a3[0],coor_a3[1], theme)
+					cross(screen, coor_a3[0],coor_a3[1], theme)
 				if i=='b1':
-					cross(coor_b1[0],coor_b1[1], theme)
+					cross(screen, coor_b1[0],coor_b1[1], theme)
 				if i=='b2':
-					cross(coor_b2[0],coor_b2[1], theme)
+					cross(screen, coor_b2[0],coor_b2[1], theme)
 				if i=='b3':
-					cross(coor_b3[0],coor_b3[1], theme)
+					cross(screen, coor_b3[0],coor_b3[1], theme)
 				if i=='c1':
-					cross(coor_c1[0],coor_c1[1], theme)
+					cross(screen, coor_c1[0],coor_c1[1], theme)
 				if i=='c2':
-					cross(coor_c2[0],coor_c2[1], theme)
+					cross(screen, coor_c2[0],coor_c2[1], theme)
 				if i=='c3':
-					cross(coor_c3[0],coor_c3[1], theme)
+					cross(screen, coor_c3[0],coor_c3[1], theme)
 			elif board[i]=='O':
 				if i=='a1':
-					circle(coor_a1[0],coor_a1[1], theme)
+					circle(screen, coor_a1[0],coor_a1[1], theme)
 				if i=='a2':
-					circle(coor_a2[0],coor_a2[1], theme)
+					circle(screen, coor_a2[0],coor_a2[1], theme)
 				if i=='a3':
-					circle(coor_a3[0],coor_a3[1], theme)
+					circle(screen, coor_a3[0],coor_a3[1], theme)
 				if i=='b1':
-					circle(coor_b1[0],coor_b1[1], theme)
+					circle(screen, coor_b1[0],coor_b1[1], theme)
 				if i=='b2':
-					circle(coor_b2[0],coor_b2[1], theme)
+					circle(screen, coor_b2[0],coor_b2[1], theme)
 				if i=='b3':
-					circle(coor_b3[0],coor_b3[1], theme)
+					circle(screen, coor_b3[0],coor_b3[1], theme)
 				if i=='c1':
-					circle(coor_c1[0],coor_c1[1], theme)
+					circle(screen, coor_c1[0],coor_c1[1], theme)
 				if i=='c2':
-					circle(coor_c2[0],coor_c2[1], theme)
+					circle(screen, coor_c2[0],coor_c2[1], theme)
 				if i=='c3':
-					circle(coor_c3[0],coor_c3[1], theme)
+					circle(screen, coor_c3[0],coor_c3[1], theme)
 		pygame.display.update()
 if __name__=='__main__':
+	pygame.init()
 	vsComputer('darkVector')

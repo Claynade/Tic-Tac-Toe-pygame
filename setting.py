@@ -1,7 +1,9 @@
 import json
 import pygame
 from functions import *
-screen=pygame.display.set_mode((1300,800))
+screen_info = pygame.display.Info()
+print(screen_info.current_w)
+screen=pygame.display.set_mode((screen_info.current_w, screen_info.current_h))
 #with open(r'gamedata.json','r') as myfile:
 #	data=json.load(myfile)
 def Setting(theme):
