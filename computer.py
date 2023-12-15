@@ -170,10 +170,8 @@ def start(screen):
                 click=False
         if buttonYes.collidepoint((pos)) and click:
             return False
-            break
         elif buttonNo.collidepoint((pos)) and click:
             return True
-            break
         pygame.display.update()
         
 #main loop
