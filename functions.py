@@ -1,12 +1,5 @@
 import pygame
 
-""" screen_info = pygame.display.Info()
-print(screen_info.current_w)
-screen=pygame.display.set_mode((screen_info.current_w, screen_info.current_h))
-screen_x, screen_y=screen.get_size()
-if screen_x>480:
-	screen_x=460 """
-
 def wood1(screen, x,y,size_x,size_y):
 	wood1Img=pygame.image.load('Assets/wood1.png')
 	screen.blit(pygame.transform.scale(wood1Img, (size_x,size_y)),(x,y))
@@ -24,14 +17,13 @@ def wood4(screen, x,y,size_x,size_y):
 	screen.blit(pygame.transform.scale(wood4Img, (size_x,size_y)),(x,y))
 
 #image and text drawing functions
-def drawCell(screen, x,y, theme): #size_x, size_y
+def drawCell(screen, x,y, theme):
 	screen_x, screen_y=screen.get_size()
 	if theme == "darkVector":
 		Img=pygame.image.load('Assets/darkVector.png')
 	else:
 		Img=pygame.image.load('Assets/woodenboard.jpg')
-	screen.blit(pygame.transform.scale(Img, (screen_x//3,screen_x//3)),(x,y)) #screen_x//3,screen_x//3 earlier
-	
+	screen.blit(pygame.transform.scale(Img, (screen_x//3,screen_x//3)),(x,y))
 def imgBlitter(screen, x,y,size_x,size_y,path):
 	Img=pygame.image.load(path)
 	screen.blit(pygame.transform.scale(Img, (size_x,size_y)),(x,y))
@@ -42,9 +34,8 @@ def drawText(screen, x,y,color,size,text):
 	screen.blit(text_render, (x, y))
 
 #changing theme and drawing board
-
 def drawBoard(screen, x, y, theme):
-	screen_x, screen_y=screen.get_size() # need to fix this
+	screen_x, screen_y=screen.get_size()
 	if theme=='light':
 		screen.fill((250,250,250))
 	elif theme=='dark':
@@ -73,7 +64,7 @@ def cross(screen, x,y,theme):
 	screen.blit(pygame.transform.scale(Img, (size_x,size_y)),(x,y))
 
 def circle(screen, x,y,theme):
-	screen_x, screen_y=screen.get_size() # need to fix this
+	screen_x, screen_y=screen.get_size()
 	size_x,size_y=((screen_x//3)*8)//10,((screen_x//3)*8)//10
 	if theme=='darkVector':
 		Img=pygame.image.load('Assets/circle.png')

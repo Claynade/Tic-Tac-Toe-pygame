@@ -29,7 +29,6 @@ while playing:
 	two_player_btn=pygame.Rect(screen_x//10,(screen_y*6)//10,(screen_x*8)//10,(screen_y*2)//10) #change the buttons size into fixed values both height and width, alignment should be centered
 	vsComputer_btn=pygame.Rect((screen_x*6)//30,(screen_y*8)//10,(screen_x*18)//30,(screen_y*2)//10)
 	theme_btn=pygame.Rect(screen_x-(screen_x*2)//10,(screen_y*17)//20,(screen_x*2)//10,(screen_x)*2//10)
-	setting_btn=pygame.Rect(screen_x//50,(screen_y*17)//20,(screen_x*2)//10,(screen_x)*2//10)
 	pos=pygame.mouse.get_pos()
 
 	for event in pygame.event.get():
@@ -43,8 +42,6 @@ while playing:
 		twoPlayer(screen, theme)
 	if vsComputer_btn.collidepoint((pos)) & click==True:
 		vsComputer(screen, theme)
-	#if setting_btn.collidepoint((pos))& click==True:
-	#	Setting(screen_x, screen_y, theme)
 	if theme_btn.collidepoint((pos)) & click==True:
 		if theme=='dark':
 			theme='light'
@@ -63,7 +60,6 @@ while playing:
 	wood2(screen, (screen_x*6)//30,(screen_y*8)//10,(screen_x*18)//30,(screen_y*2)//10)
 	wood3(screen, 0,0,screen_x,screen_y*3//20)
 	wood4(screen, screen_x-(screen_x*2)//10,(screen_y*17)//20,(screen_x*2)//10,(screen_x)*2//10)
-	wood4(screen, screen_x//50,(screen_y*17)//20,(screen_x*2)//10,(screen_x)*2//10)
 	#changing json values
 	with open('gamedata.json','w') as myfile:
 		json.dump(data,myfile)
